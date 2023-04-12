@@ -1,3 +1,7 @@
+//npm init -y
+//npm install express
+//node app.js
+
 let noteTitle;
 let noteText;
 let saveNoteBtn;
@@ -65,7 +69,6 @@ const renderActiveNote = () => {
     noteText.value = '';
   }
 };
-
 const handleNoteSave = () => {
   const newNote = {
     title: noteTitle.value,
