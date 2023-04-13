@@ -24,6 +24,15 @@
 
 // app.use(express.static('public'));
 
+//get route for homepage
+app.get('/api/notetaker', (req, res) =>{
+    res.json(`${req.method} request received`);
+    console.info(req.rawHeaders);
+    console.info(`${req.method} request received`);
+});
+
+
+
 // // GET Route for homepage
 // app.get('/', (req, res) =>
 //   res.sendFile(path.join(__dirname, '/public/index.html'))
