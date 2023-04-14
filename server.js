@@ -5,44 +5,57 @@
 
 //npm init -y
 //node server.js
+//npm i uniqid
 
-// const express = require('express');
-// const path = require('path');
-// const fs = require('fs');
-// const util = require('util');
+const express = require('express');
+const path = require('path');
+//like fs built into node, just in call it
+const fs = require('fs');
+const util = require('util');
+const uniqid = require('uniqid'); 
 
 // // Helper method for generating unique ids
-// const uuid = require('./helpers/uuid');
+//go get unique id npm
 
-// const PORT = 3001;
+const PORT = process.env.PORT || 3001;
+//use other service other than git hub like heroku requries 5 digits.
 
-// const app = express();
+const app = express();
+//triggering express which starts servers and how it should run
 
 // // Middleware for parsing JSON and urlencoded form data
-// app.use(express.json());
-// app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-// app.use(express.static('public'));
+app.use(express.static('public'));
+//accesses the pretty stuff
 
 //get route for homepage
-app.get('/api/notetaker', (req, res) =>{
-    res.json(`${req.method} request received`);
-    console.info(req.rawHeaders);
-    console.info(`${req.method} request received`);
-});
+app.get('/api/notes', (req, res) =>{
+    fs.readFile("./db/db.json", "utf8", (error, data)=>{
+        console.log(data);
+        const notes = JSON.parse(data);
+        console.log(notes);
+        res.json(notes);
+    } );
+   });
 
 
-
-// // GET Route for homepage
-// app.get('/', (req, res) =>
-//   res.sendFile(path.join(__dirname, '/public/index.html'))
-// );
-
-
-// app.get('/api/tips', (req, res) => {
-//     console.info(`${req.method} request received for tips`);
-//     readFromFile('./db/tips.json').then((data) => res.json(JSON.parse(data)));
-//   });
+app.post('/api/notes', (req, res) => {
+    console.log(req.body);
+    req.body.id = uniqid();
+    console.log(req.body);
+    fs.readFile("./db/db.json", "utf8", (error, data) =>{
+        console.log(data);
+        const notes = JSON.parse(data);
+        console.log(notes);
+        notes.push(req.body);
+    fs.writeFile("./db/db.json",JSON.stringify(notes), error =>{
+        if(error) throw error;
+        return res.json(notes);
+    });    
+    })
+  });
   
 //   // POST Route for a new UX/UI tip
 //   app.post('/api/tips', (req, res) => {
@@ -64,3 +77,19 @@ app.get('/api/notetaker', (req, res) =>{
 //       res.error('Error in adding tip');
 //     }
 //   });
+
+// GET Route for homepage
+app.get('/', (req, res) =>
+  res.sendFile(path.join(__dirname, '/public/index.html'))
+);
+
+app.get('/notes', (req, res) =>
+  res.sendFile(path.join(__dirname, '/public/notes.html'))
+);
+
+app.listen(PORT, () =>
+  console.log(`App listening at http://localhost:${PORT} 🚀`)
+);
+//gives the app all the rules and expectations then askes the app to start
+//view-html route what the users sees when visiting 
+//api route is triggered by a fetch call
