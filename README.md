@@ -38,8 +38,20 @@ What are the steps required to install your project? Provide a step-by-step desc
 2. npm install
 3. npm i uniqid
 4. node server.js
+5. npm install -g heroku
+6. heroku login
+heroku: Press any key to open up the browser to login or q to exit
+ ›   Warning: If browser does not open, visit
+ ›   https://cli-auth.heroku.com/auth/browser/***
+heroku: Waiting for login...
+Logging in... done
+Logged in as me@example.com
 
 Once you have install the required parts, you will be able to open the app in local host.
+7. cd ~/myapp
+heroku create
+Creating app... done, ⬢ sleepy-meadow-81798
+https://sleepy-meadow-81798.herokuapp.com/ | https://git.heroku.com/sleepy-meadow-81798.git
 
 ## Usage
 

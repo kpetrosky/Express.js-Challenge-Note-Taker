@@ -6,6 +6,7 @@
 //npm init -y
 //node server.js
 //npm i uniqid
+//npm install -g heroku
 
 const express = require('express');
 const path = require('path');
