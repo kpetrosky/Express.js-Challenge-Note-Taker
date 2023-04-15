@@ -58,7 +58,21 @@ app.post('/api/notes', (req, res) => {
   });
   
 //similar to above but with delete stuff
-
+app.delete('/api/notes', (req, res) => {
+  console.log(req.body);
+  req.body.id = uniqid();
+  console.log(req.body);
+  fs.readFile("./db/db.json", "utf8", (error, data) =>{
+      console.log(data);
+      const notes = JSON.parse(data);
+      console.log(notes);
+      notes.push(req.body);
+  fs.writeFile("./db/db.json",JSON.stringify(notes), error =>{
+      if(error) throw error;
+      return res.json(notes);
+  });    
+  })
+});
 
 app.get('/', (req, res) =>
   res.sendFile(path.join(__dirname, '/public/index.html'))
