@@ -66,3 +66,6 @@ Provide instructions and examples for use. Include screenshots as needed.
 
 
 
+screencastify links to walkthrough:
+without heroku https://watch.screencastify.com/v/lH0hmzOlYIwjqRIcXC1v 
+with Heroku https://watch.screencastify.com/v/jNhmT7hmtbj32qwY8cm4
