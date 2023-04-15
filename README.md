@@ -44,11 +44,12 @@ Once you have install the required parts, you will be able to open the app in lo
 ## Usage
 
 Provide instructions and examples for use. Include screenshots as needed.
+![image](https://user-images.githubusercontent.com/122655154/232246923-37425fc3-4bcd-4677-b5e9-83e9a6fa91bf.png)
 
-To add a screenshot, create an `assets/images` folder in your repository and upload your screenshot to it. Then, using the relative filepath, add it to your README using the following syntax:
+![image](https://user-images.githubusercontent.com/122655154/232246959-ad060d09-9768-4e44-967b-1be6e646c711.png)
+![image](https://user-images.githubusercontent.com/122655154/232247043-a42b3137-d0fa-4c2f-b792-0f8d9899202f.png)
+![image](https://user-images.githubusercontent.com/122655154/232247052-abdcd71c-21a9-46d4-b027-18d9a20f006a.png)
 
-    ```md
-    ![alt text](assets/images/screenshot.png)
     ```
 
 
