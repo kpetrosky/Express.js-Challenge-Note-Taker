@@ -7,6 +7,9 @@
 //node server.js
 //npm i uniqid
 //npm install -g heroku
+//heroku --version
+//heroku login
+//heroku create
 
 const express = require('express');
 const path = require('path');
